@@ -1,0 +1,58 @@
+{
+  "id": "yuedu",
+  "name": "月读",
+  "version": "0.1.0",
+  "description": "把我的回复读给你听。监听会话输出完成，用 edge-tts 合成中文语音在本机播放。对话内可随时开关（/语音 或 直接说）。",
+  "trust": "full-access",
+  "minAppVersion": "0.440.0",
+  "activationEvents": ["onStartup"],
+  "contributes": {
+    "configuration": {
+      "properties": {
+        "enabled": {
+          "type": "boolean",
+          "default": false,
+          "title": "朗读开关",
+          "description": "开启后，我每说完一段话会自动朗读。"
+        },
+        "engine": {
+          "type": "string",
+          "enum": ["edge-tts", "sapi"],
+          "default": "edge-tts",
+          "title": "语音引擎",
+          "description": "edge-tts 为神经网络语音（需联网），sapi 为 Windows 本地语音（离线兜底）。"
+        },
+        "voice": {
+          "type": "string",
+          "default": "zh-CN-XiaoxiaoNeural",
+          "title": "音色",
+          "description": "edge-tts 音色 ID，如 zh-CN-XiaoxiaoNeural、zh-CN-YunxiNeural、zh-CN-XiaoyiNeural。"
+        },
+        "rate": {
+          "type": "string",
+          "default": "+0%",
+          "title": "语速",
+          "description": "edge-tts 语速，如 +0%、+10%、-10%。"
+        },
+        "maxLength": {
+          "type": "number",
+          "default": 600,
+          "title": "单次朗读上限",
+          "description": "单条回复最多朗读的字符数，超出部分截断。"
+        },
+        "readUser": {
+          "type": "boolean",
+          "default": false,
+          "title": "朗读你的消息",
+          "description": "开启后也会朗读你发来的消息。"
+        },
+        "voiceOfUser": {
+          "type": "string",
+          "default": "zh-CN-XiaoyiNeural",
+          "title": "你的消息音色",
+          "description": "朗读用户消息时使用的音色。"
+        }
+      }
+    }
+  }
+}
